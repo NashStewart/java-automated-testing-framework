@@ -13,7 +13,7 @@ public class HomePageTests extends BaseTestClass {
         ResourcesPage resourcesPage = new ResourcesPage(driver);
 
         homePage.goTo();
-        homePage.clickResourcesNavOption();
+        homePage.getNav().clickResourcesNavOption();
         Assertions.assertEquals("Featured Resource", resourcesPage.getFeaturedResourcesHeaderText(), "The header text does not match");
     }
 }

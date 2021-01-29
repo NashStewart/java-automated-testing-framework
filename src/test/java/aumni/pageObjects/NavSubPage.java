@@ -11,10 +11,21 @@ public class NavSubPage extends BasePage {
         super(driver);
     }
 
-    public
     @FindBy(id="comp-kd5ryhsn0label")
     @CacheLookup
     WebElement solutionsNavOption;
+
+    @FindBy(id="comp-kd5ryhsnmoreContainer0label")
+    @CacheLookup
+    WebElement aumniForGeneralPartnersNavOption;
+
+    @FindBy(id="comp-kd5ryhsnmoreContainer1label")
+    @CacheLookup
+    WebElement aumniForFinanceNavOption;
+
+    @FindBy(id="comp-kd5ryhsnmoreContainer2label")
+    @CacheLookup
+    WebElement aumniForLegalNavOption;
 
     @FindBy(id="comp-kd5ryhsn1label")
     @CacheLookup
@@ -32,7 +43,36 @@ public class NavSubPage extends BasePage {
     @CacheLookup
     WebElement getADemoButton;
 
+    public void clickAumniForGeneralPartnersNavOption() {
+        clickSolutionsOption(aumniForGeneralPartnersNavOption);
+    }
+
+    public void clickAumniForFinanceNavOption() {
+        clickSolutionsOption(aumniForFinanceNavOption);
+    }
+
+    public void clickAumniForLegalNavOption() {
+        clickSolutionsOption(aumniForLegalNavOption);
+    }
+
     public void clickResourcesNavOption() {
         getElementWithWait(resourcesNavOption).click();
+    }
+
+    public void clickBlogNavOption() {
+        getElementWithWait(blogNavOption).click();
+    }
+
+    public void clickLoginNavOption() {
+        getElementWithWait(loginNavOption).click();
+    }
+
+    public void clickGetADemoNavOption() {
+        getElementWithWait(getADemoButton).click();
+    }
+
+    private void clickSolutionsOption(WebElement element) {
+        moveToElement(solutionsNavOption);
+        getElementWithWait(element).click();
     }
 }

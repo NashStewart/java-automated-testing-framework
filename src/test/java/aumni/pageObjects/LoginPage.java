@@ -9,6 +9,7 @@ public class LoginPage extends AumniBasePage{
 
     String expectedLoginButtonText = "Login";
     String expectedWrongLoginMessageText = "WRONG EMAIL OR PASSWORD.";
+    String expectedBlockedAccountMessageText = "YOUR ACCOUNT HAS BEEN BLOCKED AFTER MULTIPLE CONSECUTIVE LOGIN ATTEMPTS.";
 
     public LoginPage(WebDriver driver) {
         super(driver, "https://app.aumni.fund/login");
@@ -34,6 +35,10 @@ public class LoginPage extends AumniBasePage{
     @CacheLookup
     WebElement wrongLoginMessage;
 
+    @FindBy(xpath="//*[text() = 'Your account has been blocked after multiple consecutive login attempts.']")
+    @CacheLookup
+    WebElement blockedAccountMessage;
+
     public void clickLogin() {
         getElementWithWait(loginButton).click();
     }
@@ -54,6 +59,10 @@ public class LoginPage extends AumniBasePage{
         return getElementWithWait(wrongLoginMessage).getText();
     }
 
+    public String getBlockedAccountMessageText() {
+        return getElementWithWait(blockedAccountMessage).getText();
+    }
+
     public void login(String email, String password) {
         clickLogin();
         inputEmail(email);
@@ -72,5 +81,9 @@ public class LoginPage extends AumniBasePage{
 
     public String getExpectedWrongLoginMessageText() {
         return expectedWrongLoginMessageText;
+    }
+
+    public String getExpectedBlockedAccountMessageText() {
+        return expectedBlockedAccountMessageText;
     }
 }
